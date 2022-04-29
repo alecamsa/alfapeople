@@ -1,0 +1,12 @@
+*********************************************************************************
+*										*
+*	    			FORMA DE USO					*
+*										*
+*********************************************************************************
+
+ 1. Al ingresar a la pantalla el sistema cargará un listado de todos los países.
+	En caso de error, dejará libre la posibilidad de digitar el nombre del país.
+ 2. Una vez seleccionado o digitado el país, presionar el botón "Obtener Universidades"
+ 3. El sistema buscará las universidades y las listará en un Gridview colocando el nombre y web page
+ 4. El sistema colocará la cantidad de registros asociados a la búsqueda.
+ 5. Se podrán realizar la cantidad de búsquedas que se deseen sin limitaciones.

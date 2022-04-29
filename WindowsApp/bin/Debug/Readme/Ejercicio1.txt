@@ -1,0 +1,10 @@
+*********************************************************************************
+*										*
+*	    			FORMA DE USO					*
+*										*
+*********************************************************************************
+
+ 1. Selecccionar un archivo XML con el formato de Compras o Ventas
+ 2. Una vez seleccionado, se debe de proceder con la opción "Procesar Archivo"
+ 3. Se genera un archivo en formato Json
+ 4. Se puede guardar el archivo en formato JSON con la opción "Guardar archivo"
