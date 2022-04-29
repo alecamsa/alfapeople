@@ -42,7 +42,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lnkTask1 = new System.Windows.Forms.LinkLabel();
             this.imgTitle = new System.Windows.Forms.PictureBox();
-            this.tmrUpdatePolizas = new System.Windows.Forms.Timer(this.components);
+            this.tmrUpdates = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.pnlBottomR.SuspendLayout();
             this.pnlCenter.SuspendLayout();
@@ -210,7 +210,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demo Alfa People";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlBottomR.ResumeLayout(false);
@@ -228,7 +227,7 @@
         private System.Windows.Forms.Panel pnlCenter;
         private System.Windows.Forms.LinkLabel lnkTask2;
         private System.Windows.Forms.LinkLabel lnkTask1;
-        private System.Windows.Forms.Timer tmrUpdatePolizas;
+        private System.Windows.Forms.Timer tmrUpdates;
         private System.Windows.Forms.LinkLabel lnkTask3;
         private System.Windows.Forms.Panel pnlMCenter;
         private System.Windows.Forms.Panel pnlBottomR;

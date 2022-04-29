@@ -1,0 +1,51 @@
+//LA SIGUIENTE FUNCIÓN NO ESTÁ PROGRAMADA DE FORMA OPTIMA
+//SIN DEMASIADO CONTEXTO SE SOLICITA ANALIZAR EL CÓDIGO
+//REFACTORIZAR EL CÓDIGO UTILIZAN GUARD CLAUSSES EN LUGAR DE IFS ANIDADOS
+//Y ELIMINANDO CODIGO DUPLICADO.
+
+public container getBaseByTotalDays
+{
+    container ret = conNull;
+    if(totaldays < 0){
+        info(strFmt("There is no days to calculate for employee %1", emplTable.EmplId));
+        return;
+    }
+ 
+    //Si se manejan bonificaciones
+    if(generalParameters.BonusMonthly == NoYes::Yes)
+    {
+        settlementType = AP_PayrollSettlementTypeTable::find(emplLines.SettlementTypeIdVar).VariableSettlementType;
+
+        //si el empleado tiene nomina variable
+        if (emplLines.SettlementTypeIdVar &&
+                (SettlementType == AP_PayrollVariableSettlementType::LastSalary 
+                    || SettlementType == AP_PayrollVariableSettlementType::Average))
+        {                                                                       
+            values = AP_PayrollProcess::CalcSumIncomesConceptsYearEnd(payRollEmplTable,
+                                                        generalParameters.ConceptGroupYearEndBonus,
+                                                        controlIniDate,
+                                                        (_liqDate > controlEndDate ? controlEndDate : _liqDate),
+                                                        NoYes::Yes,
+                                                        '',
+                                                        NoYes::No);
+            
+        }                                                                                                          
+    }
+    else
+    {
+        values = AP_PayrollProcess::CalcSumConcepts(payRollEmplTable,
+                                                            generalParameters.ConceptGroupYearEndBonus,
+                                                            controlIniDate,
+                                                            (_liqDate > controlEndDate ? controlEndDate : _liqDate),
+                                                            NoYes::Yes,
+                                                            '',
+                                                            NoYes::No);
+    }
+    BaseSuma   = conPeek(values,1);
+    BaseResta  = conPeek(values,2);
+    valueToPay = BaseSuma - BaseResta;
+    totalBase  = BaseSuma - BaseResta;
+    valueToPay = valueToPay / 12;
+
+    ret = [BaseSuma, totalDays];
+} 

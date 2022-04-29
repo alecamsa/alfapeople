@@ -91,6 +91,12 @@
     <Compile Include="frmEjercicio2.Designer.cs">
       <DependentUpon>frmEjercicio2.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEjercicio3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEjercicio3.Designer.cs">
+      <DependentUpon>frmEjercicio3.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,8 +126,12 @@
     <EmbeddedResource Include="frmEjercicio2.resx">
       <DependentUpon>frmEjercicio2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEjercicio3.resx">
+      <DependentUpon>frmEjercicio3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEjercicio1.resx">
       <DependentUpon>frmEjercicio1.cs</DependentUpon>

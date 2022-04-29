@@ -42,13 +42,6 @@ namespace WindowsApp
         {
             frmEjercicio1 fmTask1 = new frmEjercicio1();
             fmTask1.ShowDialog();
-            //await LoadData();
-        }
-
-
-        private async void frmMain_Load(object sender, EventArgs e)
-        {
-          
         }
 
         private void lnkTask2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -59,7 +52,8 @@ namespace WindowsApp
 
         private void lnkTask3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            frmEjercicio3 fmTask3 = new frmEjercicio3();
+            fmTask3.ShowDialog();
         }
     }
 }

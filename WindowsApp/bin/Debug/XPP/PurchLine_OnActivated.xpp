@@ -1,0 +1,45 @@
+//Se tiene la siguiente función ejecutada por el evento de activación del data source del formulario PurchTable
+//Tiene evidentes prácticas no optimas.
+//Se solicita lo siguiente:
+//La función no debe contener IFS
+//Utilizar funciones en tiempo de compilación (https://docs.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-compile-time-functions)
+//Agregar semántica a los nombres de variables donde sea necesario 
+
+
+
+    [FormDataSourceEventHandler(formDataSourceStr(PurchTable, PurchLine), FormDataSourceEventType::Activated)]
+    public static void PurchLine_OnActivated(FormDataSource sender, FormDataSourceEventArgs e)
+    {
+
+        // validate entity
+        dataEntityDataSourceStr(PurchTable,PurchLine);
+
+
+        PurchLine           purchLine       = sender.formRun().dataSource(2).cursor();
+        FormDataSource      purchLine_ds    = sender.formRun().dataSource("PurchLine");
+        FormRun             element         = sender.formRun();
+
+        FormControl         btnViewLines        = element.design(0).controlName("LineViewLines");
+        FormControl         btnViewLineDetails  = element.design(0).controlName("LineViewLineDetails");
+        FormControl         btnStripDelete      = element.design(0).controlName("LineStripDelete");
+        FormControl         btnStripNew         = element.design(0).controlName("LineStripNew");
+        FormControl         btnOverviewAction   = element.design(0).controlName("LineOverviewActionStrip");
+
+        bool stateControls = purchLine.RecId && purchLine.APInventJournalId;
+        
+        btnViewLines.allowEdit(!stateControls);
+        btnViewLineDetails.allowEdit(!stateControls);    
+        btnStripDelete.enabled(!stateControls); 
+        btnStripNew.enabled(!stateControls); 
+        btnOverviewAction.enabled(!stateControls);
+    }
+
+    //NOTA: Con respecto al punto de utilizar funciones en tiempo real se leyó la documentación y se buscarons ejemplos en Google
+    // sin embargo, es poca la información asociada y como utilizarlas. Se comprende la idea de las funciones en tiempo de compilación
+    // pero no la forma en como aplicarlas.
+    // Links de referencia:
+    // https://community.dynamics.com/ax/b/axinthefield/posts/get-started-developing-in-x-with-code-examples
+    // https://msdaxpulse.wordpress.com/2020/08/26/modifying-datasource-values-on-data-entities-using-mapentitytodatasource-method-on-data-entities-d365fo-x/
+    // https://usdynamics365.wordpress.com/category/data-entities-microsoft-dynamics-365-for-finance-and-operations/
+    // https://chaituax.wordpress.com/2020/03/10/class-extension-for-dataentity-in-d365/
+    // http://msdynamax.blogspot.com/2013/10/functions-and-macros.html 

@@ -1,0 +1,16 @@
+//Se tiene el siguiente código, se tiene dos ciclos while, por temas de mantenimiento de código
+//se solicita que se refactorice la función utilizando queries, y usando un solo ciclo
+
+public void run()
+{
+	SalesTable salesTable;
+	while select salesTable {
+		if (salesTable.SalesStatus == SalesStatus::Backorder) {
+			this.processBackOrderSales(salesTable);	
+		}
+		else if (includeInvoiced && salesTable.SalesStatus == SalesStatus::Invoiced)
+		{
+			this.processInvoicedSales(salesTable);
+		}				
+	}
+}
